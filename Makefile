@@ -1,2 +1,2 @@
 a:
-	echo
+	echo "hello world"
