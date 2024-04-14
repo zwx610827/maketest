@@ -1,0 +1,24 @@
+#使用自定义变量
+
+#定义：变量名=变量值
+#使用：$(变量名)
+#自定义变量
+OBJ=add.o sub.o multi.o calc.o
+TARGET=calc
+#使用变量的好处：将一些信息用变量表示，后面重复使用的话，不用重复去写，一处定义，多处使用
+$(TARGET):$(OBJ)
+	gcc $(OBJ) -o $(TARGET)
+add.o:add.c
+	gcc -c add.c -o add.o
+
+sub.o:sub.c
+	gcc -c sub.c -o sub.o
+
+multi.o:multi.c
+	gcc -c multi.c -o multi.o
+
+calc.o:calc.c
+	gcc -c calc.c -o calc.o
+
+clean:
+	rm -rf *.o calc

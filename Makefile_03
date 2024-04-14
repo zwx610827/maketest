@@ -1,0 +1,31 @@
+#使用系统变量
+
+OBJ=add.o sub.o multi.o calc.o
+TARGET=calc
+
+#系统变量
+#$*	不包括扩展名的目标文件名称
+#$+	所有的依赖文件，以空格分隔
+#$<	表示规则中的第一个条件
+#$?	所有时间戳比目标文件晚的依赖文件，以空格分隔
+#$@	目标文件的完整名称
+#$^	所有不重复的依赖文件，以空格分隔
+#$%	如果目标是归档成员，则该变量表示目标的归档成员名称
+
+#使用系统变量来代替命令行中的变量名
+$(TARGET):$(OBJ)
+	gcc $^ -o $@
+add.o:add.c
+	gcc -c $^ -o $@
+
+sub.o:sub.c
+	gcc -c $^ -o $@
+
+multi.o:multi.c
+	gcc -c $^ -o $@
+
+calc.o:calc.c
+	gcc -c $^ -o $@
+
+clean:
+	rm -rf *.o $(TARGET)
